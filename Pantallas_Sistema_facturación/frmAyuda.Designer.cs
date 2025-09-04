@@ -47,9 +47,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(271, 121);
             label2.Name = "label2";
-            label2.Size = new Size(262, 25);
+            label2.Size = new Size(253, 25);
             label2.TabIndex = 1;
-            label2.Text = "el perfil de .net sea el correcto.  ";
+            label2.Text = "el perfil de .net sea el correcto ";
             label2.Click += label2_Click;
             // 
             // frmAyuda
