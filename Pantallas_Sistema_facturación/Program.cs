@@ -1,3 +1,6 @@
+using Capa_Presentacion; //  
+
+
 namespace Pantallas_Sistema_facturación
 {
     internal static class Program

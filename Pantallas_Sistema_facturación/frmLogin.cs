@@ -1,14 +1,9 @@
+﻿using Capa_LogicaDeNegocios; // <-- Referencia a la capa de lógica
+using Pantallas_Sistema_facturación;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Pantallas_Sistema_facturación
+namespace Capa_Presentacion
 {
     public partial class frmLogin : Form
     {
@@ -17,38 +12,40 @@ namespace Pantallas_Sistema_facturación
             InitializeComponent();
         }
 
-        // Evento para el botón VALIDAR (asumiendo que se llama button1)
-        private void button1_Click(object sender, EventArgs e)
+        private void btnvalidar_Click(object sender, EventArgs e)
         {
-            // Datos de prueba
-            string usuarioCorrecto = "admin";
-            string passwordCorrecto = "1234";
-
-            // Verificamos si el texto de los TextBox coincide
-            if (txtUsuario.Text == usuarioCorrecto && txtPassword.Text == passwordCorrecto)
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtpasword.Text))
             {
-                // Si son correctos, abrimos el formulario principal
-                frmPrincipal formularioPrincipal = new frmPrincipal();
-                formularioPrincipal.Show();
+                MessageBox.Show("Debes ingresar un usuario y una clave");
+                return;
+            }
 
-                // Y ocultamos el formulario de login actual
+            // 1. Crea un objeto de la clase de la capa de lógica
+            Validar_usuario obj_validar = new Validar_usuario();
+
+            // 2. Le pasa los datos de los TextBox
+            obj_validar.StrUsuario = txtUsuario.Text;
+            obj_validar.StrClave = txtpasword.Text;
+
+            // 3. Llama al método que devuelve true o false
+            if (obj_validar.ValidarUsuario())
+            {
+                MessageBox.Show("Datos de verificación Válidos");
+                frmPrincipal principal = new frmPrincipal();
                 this.Hide();
+                principal.Show();
             }
             else
             {
-                // Si son incorrectos, mostramos un mensaje de error
-                MessageBox.Show("Usuario o contraseña incorrectos.", "Error de Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                // Limpiamos la contraseña y ponemos el cursor en el usuario
-                txtPassword.Clear();
+                MessageBox.Show("USUARIO Y CLAVE NO ENCONTRADOS");
+                txtUsuario.Clear();
+                txtpasword.Clear();
                 txtUsuario.Focus();
             }
         }
 
-        // Evento para el botón CANCELAR (asumiendo que se llama button2)
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            // Cierra toda la aplicación
             Application.Exit();
         }
     }

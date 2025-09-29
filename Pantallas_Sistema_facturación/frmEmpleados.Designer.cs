@@ -1,4 +1,4 @@
-﻿namespace Pantallas_Sistema_facturación
+﻿namespace Capa_Presentacion
 {
     partial class frmEmpleados
     {
@@ -28,260 +28,246 @@
         /// </summary>
         private void InitializeComponent()
         {
+            txtNombreEmpleado = new TextBox();
+            txtDocumento = new TextBox();
+            txtDireccion = new TextBox();
+            txtTelefono = new TextBox();
+            txtEmail = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            cboRolEmpleado = new ComboBox();
+            dtmIngreso = new DateTimePicker();
+            dtmRetiro = new DateTimePicker();
             label7 = new Label();
             label8 = new Label();
+            txtDatosAdicionales = new TextBox();
             label9 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            textBox1 = new TextBox();
-            label10 = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            comboBox1 = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
+            btnActualizar = new Button();
+            btnSalir = new Button();
             SuspendLayout();
+            // 
+            // txtNombreEmpleado
+            // 
+            txtNombreEmpleado.Location = new Point(28, 49);
+            txtNombreEmpleado.Name = "txtNombreEmpleado";
+            txtNombreEmpleado.Size = new Size(150, 31);
+            txtNombreEmpleado.TabIndex = 0;
+            // 
+            // txtDocumento
+            // 
+            txtDocumento.Location = new Point(28, 134);
+            txtDocumento.Name = "txtDocumento";
+            txtDocumento.Size = new Size(150, 31);
+            txtDocumento.TabIndex = 1;
+            // 
+            // txtDireccion
+            // 
+            txtDireccion.Location = new Point(28, 220);
+            txtDireccion.Name = "txtDireccion";
+            txtDireccion.Size = new Size(150, 31);
+            txtDireccion.TabIndex = 2;
+            // 
+            // txtTelefono
+            // 
+            txtTelefono.Location = new Point(28, 301);
+            txtTelefono.Name = "txtTelefono";
+            txtTelefono.Size = new Size(150, 31);
+            txtTelefono.TabIndex = 3;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(28, 396);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(150, 31);
+            txtEmail.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(94, 128);
+            label1.Location = new Point(31, 15);
             label1.Name = "label1";
             label1.Size = new Size(163, 25);
-            label1.TabIndex = 0;
+            label1.TabIndex = 5;
             label1.Text = "Nombre Empleado";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(94, 212);
+            label2.Location = new Point(32, 103);
             label2.Name = "label2";
             label2.Size = new Size(106, 25);
-            label2.TabIndex = 1;
+            label2.TabIndex = 6;
             label2.Text = "Documento";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(94, 295);
+            label3.Location = new Point(39, 182);
             label3.Name = "label3";
             label3.Size = new Size(85, 25);
-            label3.TabIndex = 2;
+            label3.TabIndex = 7;
             label3.Text = "Dirección";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(94, 380);
+            label4.Location = new Point(45, 273);
             label4.Name = "label4";
             label4.Size = new Size(79, 25);
-            label4.TabIndex = 3;
+            label4.TabIndex = 8;
             label4.Text = "Teléfono";
-            label4.Click += label4_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(94, 472);
+            label5.Location = new Point(48, 363);
             label5.Name = "label5";
             label5.Size = new Size(54, 25);
-            label5.TabIndex = 4;
+            label5.TabIndex = 9;
             label5.Text = "Email";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(443, 128);
+            label6.Location = new Point(276, 15);
             label6.Name = "label6";
             label6.Size = new Size(122, 25);
-            label6.TabIndex = 5;
-            label6.Text = "Rol empleado";
+            label6.TabIndex = 10;
+            label6.Text = "Rol Empleado";
+            // 
+            // cboRolEmpleado
+            // 
+            cboRolEmpleado.FormattingEnabled = true;
+            cboRolEmpleado.Location = new Point(276, 49);
+            cboRolEmpleado.Name = "cboRolEmpleado";
+            cboRolEmpleado.Size = new Size(182, 33);
+            cboRolEmpleado.TabIndex = 11;
+            // 
+            // dtmIngreso
+            // 
+            dtmIngreso.Location = new Point(276, 134);
+            dtmIngreso.Name = "dtmIngreso";
+            dtmIngreso.Size = new Size(300, 31);
+            dtmIngreso.TabIndex = 12;
+            // 
+            // dtmRetiro
+            // 
+            dtmRetiro.Location = new Point(276, 232);
+            dtmRetiro.Name = "dtmRetiro";
+            dtmRetiro.Size = new Size(300, 31);
+            dtmRetiro.TabIndex = 13;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(443, 183);
+            label7.Location = new Point(278, 106);
             label7.Name = "label7";
             label7.Size = new Size(90, 25);
-            label7.TabIndex = 6;
+            label7.TabIndex = 14;
             label7.Text = "F. Ingreso";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(443, 246);
+            label8.Location = new Point(278, 204);
             label8.Name = "label8";
-            label8.Size = new Size(76, 25);
-            label8.TabIndex = 7;
-            label8.Text = "F. Retiro";
+            label8.Size = new Size(77, 25);
+            label8.TabIndex = 15;
+            label8.Text = "F. Salida";
+            // 
+            // txtDatosAdicionales
+            // 
+            txtDatosAdicionales.Location = new Point(276, 326);
+            txtDatosAdicionales.Name = "txtDatosAdicionales";
+            txtDatosAdicionales.Size = new Size(231, 31);
+            txtDatosAdicionales.TabIndex = 16;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(443, 314);
+            label9.Location = new Point(278, 295);
             label9.Name = "label9";
-            label9.Size = new Size(185, 25);
-            label9.TabIndex = 8;
-            label9.Text = "DATOS ADICIONALES";
+            label9.Size = new Size(151, 25);
+            label9.TabIndex = 17;
+            label9.Text = "Datos adicionales";
             // 
-            // button1
+            // btnActualizar
             // 
-            button1.Location = new Point(242, 582);
-            button1.Name = "button1";
-            button1.Size = new Size(128, 34);
-            button1.TabIndex = 9;
-            button1.Text = "ACTUALIZAR";
-            button1.UseVisualStyleBackColor = true;
+            btnActualizar.Location = new Point(276, 408);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(122, 34);
+            btnActualizar.TabIndex = 18;
+            btnActualizar.Text = "ACTUALIZAR";
+            btnActualizar.UseVisualStyleBackColor = true;
+            btnActualizar.Click += btnActualizar_Click;
             // 
-            // button2
+            // btnSalir
             // 
-            button2.Location = new Point(422, 582);
-            button2.Name = "button2";
-            button2.Size = new Size(112, 34);
-            button2.TabIndex = 10;
-            button2.Text = "SALIR";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(443, 361);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(239, 103);
-            textBox1.TabIndex = 11;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(242, 28);
-            label10.Name = "label10";
-            label10.Size = new Size(312, 25);
-            label10.TabIndex = 12;
-            label10.Text = "ADMINISTRACIÓN DE EMPLEADOS";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(94, 156);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(150, 31);
-            textBox2.TabIndex = 13;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(94, 240);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(150, 31);
-            textBox3.TabIndex = 14;
-            textBox3.TextChanged += textBox3_TextChanged;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(94, 323);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(150, 31);
-            textBox4.TabIndex = 15;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(94, 408);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(150, 31);
-            textBox5.TabIndex = 16;
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(94, 500);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(150, 31);
-            textBox6.TabIndex = 17;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(571, 128);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(181, 33);
-            comboBox1.TabIndex = 18;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(570, 183);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(182, 31);
-            dateTimePicker1.TabIndex = 19;
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(571, 238);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(182, 31);
-            dateTimePicker2.TabIndex = 20;
+            btnSalir.Location = new Point(464, 408);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(112, 34);
+            btnSalir.TabIndex = 19;
+            btnSalir.Text = "SALIR";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
             // frmEmpleados
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 675);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(label10);
-            Controls.Add(textBox1);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            ClientSize = new Size(908, 553);
+            Controls.Add(btnSalir);
+            Controls.Add(btnActualizar);
             Controls.Add(label9);
+            Controls.Add(txtDatosAdicionales);
             Controls.Add(label8);
             Controls.Add(label7);
+            Controls.Add(dtmRetiro);
+            Controls.Add(dtmIngreso);
+            Controls.Add(cboRolEmpleado);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(txtEmail);
+            Controls.Add(txtTelefono);
+            Controls.Add(txtDireccion);
+            Controls.Add(txtDocumento);
+            Controls.Add(txtNombreEmpleado);
             Name = "frmEmpleados";
             Text = "frmEmpleados";
+            Load += frmEmpleados_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
+        private TextBox txtNombreEmpleado;
+        private TextBox txtDocumento;
+        private TextBox txtDireccion;
+        private TextBox txtTelefono;
+        private TextBox txtEmail;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
         private Label label6;
+        private ComboBox cboRolEmpleado;
+        private DateTimePicker dtmIngreso;
+        private DateTimePicker dtmRetiro;
         private Label label7;
         private Label label8;
+        private TextBox txtDatosAdicionales;
         private Label label9;
-        private Button button1;
-        private Button button2;
-        private TextBox textBox1;
-        private Label label10;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private ComboBox comboBox1;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
+        private Button btnActualizar;
+        private Button btnSalir;
     }
 }

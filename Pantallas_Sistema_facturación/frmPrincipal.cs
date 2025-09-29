@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa_Presentacion;
 
 namespace Pantallas_Sistema_facturación
 {
@@ -59,6 +60,7 @@ namespace Pantallas_Sistema_facturación
         private void button4_Click(object sender, EventArgs e)
         {
             AbrirFormularioHijo(new frmAdminSeguridad());
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -76,6 +78,21 @@ namespace Pantallas_Sistema_facturación
 
             // Cierra este formulario principal actual.
             this.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo(new frmProductos());
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo(new frmListaEmpleados());
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo(new frmRolEmpleados());
         }
     }
 }
