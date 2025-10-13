@@ -49,7 +49,7 @@ namespace Pantallas_Sistema_facturación
         private void button2_Click(object sender, EventArgs e)
         {
             // Llama a la función para abrir el formulario de Clientes
-            AbrirFormularioHijo(new frmClientes());
+            AbrirFormularioHijo(new frmListaClientes());
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace Pantallas_Sistema_facturación
 
         private void button6_Click(object sender, EventArgs e)
         {
-            AbrirFormularioHijo(new frmProductos());
+            AbrirFormularioHijo(new frmListaProductos());
         }
 
         private void button7_Click(object sender, EventArgs e)

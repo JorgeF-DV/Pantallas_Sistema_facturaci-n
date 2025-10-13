@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Capa_LogicaDeNegocios;
+using System;
 using System.Data;
 using System.Windows.Forms;
 
-namespace Pantallas_Sistema_facturación
+namespace Capa_Presentacion
 {
     public partial class frmProductos : Form
     {
-        private AccesoDatos miAccesoDatos = new AccesoDatos();
-        private int idProductoSeleccionado = 0;
+        public int IdProducto { get; set; }
+        private Cls_Productos producto = new Cls_Productos();
 
         public frmProductos()
         {
@@ -16,94 +17,62 @@ namespace Pantallas_Sistema_facturación
 
         private void frmProductos_Load(object sender, EventArgs e)
         {
-            CargarProductos();
             CargarCategorias();
-        }
-
-        private void CargarProductos()
-        {
-            dgvProductos.DataSource = miAccesoDatos.ObtenerProductos();
+            if (IdProducto > 0)
+            {
+                this.Text = "Editar Producto";
+                cargar_datos_producto();
+            }
+            else
+            {
+                this.Text = "Nuevo Producto";
+            }
         }
 
         private void CargarCategorias()
         {
-            cmbCategoria.DataSource = miAccesoDatos.ObtenerCategorias();
-            cmbCategoria.DisplayMember = "StrDescripcion"; 
-            cmbCategoria.ValueMember = "IdCategoria";      
+            // Ya no usamos una lógica auxiliar, usamos la instancia correcta de 'producto'
+            cmbCategoria.DataSource = producto.ConsultarCategorias();
+
+            // Le decimos qué columna MOSTRAR al usuario (de TBLCATEGORIA_PROD)
+            cmbCategoria.DisplayMember = "StrDescripcion";
+
+            // Le decimos qué columna usar como VALOR INTERNO (de TBLCATEGORIA_PROD)
+            cmbCategoria.ValueMember = "IdCategoria";
         }
 
-        private void LimpiarCampos()
+        private void cargar_datos_producto()
         {
-            
-            txtNombreProducto.Clear();
-            txtCodigoReferencia.Clear();
-            txtPrecioCompra.Clear();
-            txtPrecioVenta.Clear();
-            txtCantidadStock.Clear();
-            txtDetallesProducto.Clear();
-            txtRutaImagen.Clear();
-            cmbCategoria.SelectedIndex = -1;
-            idProductoSeleccionado = 0;
+            DataTable dt = producto.ConsultarProductoPorId(IdProducto);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow fila = dt.Rows[0];
+                txtNombreProducto.Text = fila["StrNombre"].ToString();
+                txtCodigoReferencia.Text = fila["StrCodigo"].ToString();
+                txtPrecioCompra.Text = fila["NumPrecioCompra"].ToString();
+                txtPrecioVenta.Text = fila["NumPrecioVenta"].ToString();
+                txtCantidadStock.Text = fila["NumStock"].ToString();
+                txtDetallesProducto.Text = fila["StrDetalle"].ToString();
+                cmbCategoria.SelectedValue = Convert.ToInt32(fila["IdCategoria"]);
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string nombre = txtNombreProducto.Text;
-            string codigo = txtCodigoReferencia.Text;
-            double pCompra = Convert.ToDouble(txtPrecioCompra.Text);
-            double pVenta = Convert.ToDouble(txtPrecioVenta.Text);
-            int stock = Convert.ToInt32(txtCantidadStock.Text);
-            int idCategoria = Convert.ToInt32(cmbCategoria.SelectedValue);
-            string detalle = txtDetallesProducto.Text;
+            producto.C_IdProducto = IdProducto;
+            producto.C_StrNombre = txtNombreProducto.Text;
+            producto.C_StrCodigo = txtCodigoReferencia.Text;
+            producto.C_NumPrecioCompra = double.Parse(txtPrecioCompra.Text);
+            producto.C_NumPrecioVenta = double.Parse(txtPrecioVenta.Text);
+            producto.C_NumStock = int.Parse(txtCantidadStock.Text);
+            producto.C_StrDetalle = txtDetallesProducto.Text;
+            producto.C_IdCategoria = Convert.ToInt32(cmbCategoria.SelectedValue);
 
-            miAccesoDatos.GuardarProducto(idProductoSeleccionado, nombre, codigo, pCompra, pVenta, idCategoria, detalle, stock);
+            string mensaje = producto.GuardarProducto();
+            MessageBox.Show(mensaje);
 
-            MessageBox.Show("Producto guardado correctamente.");
-            CargarProductos();
-            LimpiarCampos();
+            this.Close();
         }
-
-        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && !dgvProductos.Rows[e.RowIndex].IsNewRow)
-            {
-                DataGridViewRow fila = dgvProductos.Rows[e.RowIndex];
-                idProductoSeleccionado = Convert.ToInt32(fila.Cells["IdProducto"].Value);
-
-                txtNombreProducto.Text = fila.Cells["StrNombre"].Value.ToString();
-                txtCodigoReferencia.Text = fila.Cells["StrCodigo"].Value.ToString();
-                txtPrecioCompra.Text = fila.Cells["NumPrecioCompra"].Value.ToString();
-                txtPrecioVenta.Text = fila.Cells["NumPrecioVenta"].Value.ToString();
-                txtCantidadStock.Text = fila.Cells["NumStock"].Value.ToString();
-                txtDetallesProducto.Text = fila.Cells["StrDetalle"].Value.ToString();
-                txtRutaImagen.Text = fila.Cells["strFoto"].Value.ToString();
-                cmbCategoria.SelectedValue = Convert.ToInt32(fila.Cells["IdCategoria"].Value);
-            }
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (idProductoSeleccionado == 0)
-            {
-                MessageBox.Show("Por favor, seleccione un producto de la lista para eliminar.");
-                return;
-            }
-
-            DialogResult confirmacion = MessageBox.Show("¿Está seguro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
-            if (confirmacion == DialogResult.Yes)
-            {
-                miAccesoDatos.EliminarProducto(idProductoSeleccionado);
-                MessageBox.Show("Producto eliminado.");
-                CargarProductos();
-                LimpiarCampos();
-            }
-        }
-
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            LimpiarCampos();
-        }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
